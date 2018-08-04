@@ -1,0 +1,40 @@
+<html>
+
+<head>
+
+</head>
+
+<body>
+  <h1>Site do Hugo</h1>
+  <input type="text" id="bpm">
+  <input type="button" value="BPM" id="seconds" onclick="out()">
+
+  <script>
+    var audio = new Audio('metronome.wav');
+    var interval = 1;
+    var i = 0;
+
+    interval_function = setInterval("sound(60)", interval * 1000);
+    clearInterval(interval_function)
+
+    function out() {
+      clearInterval(interval_function)
+      bpm = document.getElementById('bpm').value;
+      console.log("bpm: " + bpm)
+      interval = 60 / bpm;
+      console.log("interval: " + interval)
+      interval_function = setInterval("sound(interval)", interval * 1000);
+    }
+
+    function sound(interval) {
+      console.log("sound")
+      console.log("i: " + i)
+      i++;
+      console.log("Audio Play")
+      audio.play()
+    }
+  </script>
+
+</body>
+
+</html>
